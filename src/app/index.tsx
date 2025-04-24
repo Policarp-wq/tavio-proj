@@ -1,3 +1,6 @@
+import * as styles from "../styles/index.module.scss";
+import clsx from 'clsx';
+
 export const App = () => {
-    return <h1>1228</h1>
+    return <button className={styles.button}>sasas</button>
 }
