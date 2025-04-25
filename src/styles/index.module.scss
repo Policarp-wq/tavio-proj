@@ -1,7 +1,5 @@
-.button {
-    padding: 20px;
-    background-color: red;
+.root{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
-::placeholder {
-  color: gray;
-} 

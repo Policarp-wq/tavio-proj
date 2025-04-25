@@ -25,7 +25,7 @@ export const SearchBar = ({placeholder = "Поиск по объявлениям
     return (
         <div>
             <input ref={inputRef} placeholder={placeholder} onInput={handleInput}></input>
-            <button className={styles.button} onClick={handleSearch}>Найти</button>
+            <button onClick={handleSearch}>Найти</button>
         </div>
     );
     

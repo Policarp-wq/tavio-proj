@@ -1,0 +1,10 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.main{
+   background-color: #cfcfcf;
+   flex-grow: 1;
+   max-width: 100vw;
+   display: grid;
+   grid-template-columns: auto min-content auto;
+}

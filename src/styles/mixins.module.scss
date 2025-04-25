@@ -1,0 +1,18 @@
+@mixin flex-dir($dir){
+    display: flex;
+    flex-flow: $dir;
+}
+
+@mixin column-center{
+    @include flex-dir(column);
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin slide-appearence($precent: 90%){
+    transition: transform 1s ease-in;
+    transform: translate(-$precent);
+    &:hover{
+        transform: translate(0);
+    }
+}

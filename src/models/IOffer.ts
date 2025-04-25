@@ -8,7 +8,17 @@ export interface IOffer{
     owner: IUser,
     images: string[],
     description: string,
-    category: Category
+    category: Category,
+    address: string
+}
+
+export interface IOfferPreview{
+    name: string,
+    price: number,
+    images: string[],
+    description: string,
+    category: Category,
+    address: string
 }
 
 export interface IOfferRegisterInfo{

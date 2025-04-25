@@ -1,0 +1,46 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.offer-preview-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: v.$padding-default;
+    gap: v.$padding-default;
+    max-height: 400px;
+}
+
+.offer-preview{
+    border: 1px solid red;
+    display: grid;
+    grid-template-rows: repeat(auto, 4);
+    gap: 0;
+    p{
+        font-size: v.$preview-font-size;
+    }
+    &__price{
+        font-weight: bold;
+        &::after{
+            content: "₽";
+        }
+    }
+    &__image{
+        max-width: 345px;
+        margin-bottom: 16px;
+    }
+    &__header{
+        @include m.flex-dir(row);
+        justify-content: space-between;
+        p{
+            font-weight: bold;
+        }
+        img{
+            max-width: 32px;
+            max-height: 32px;
+        }
+    }
+    &__address{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}

@@ -1,0 +1,33 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.aside{
+    @include m.column-center;
+    @include m.slide-appearence();
+    justify-content: flex-start;
+    flex-shrink: 0;
+    padding: v.$padding-default;
+    border-radius: 0 v.$border-radius v.$border-radius 0;
+    color: v.$text-color-inverted;
+    background-color: v.$aside-backgroud;
+    &__title{
+        color: v.$text-color;
+        cursor: default
+    }
+    &__list{
+        @include m.column-center;
+        width: 100%;
+        padding-top: v.$padding-default;
+        row-gap: v.$padding-default;
+        border-top: 1px solid v.$text-color;
+        li{
+            font-size: v.$font-size;
+            color: v.$text-color-inverted;
+            &:hover{
+                color: v.$text-color;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+}

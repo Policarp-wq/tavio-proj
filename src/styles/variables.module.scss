@@ -1,0 +1,23 @@
+$device: large;
+
+$padding-default: 16px;
+@if $device == small {
+    $padding-default: 6px;
+}
+
+$font-size: 28px;
+@if $device == small {
+    $font-size: 16px;
+}
+
+$preview-font-size: 24px;
+@if $device == small {
+    $preview-font-size: 28px;
+}
+
+$border-radius: 15px;
+
+
+$text-color: #3D2E50;
+$text-color-inverted: #fff;
+$aside-backgroud: rgba(9, 154, 244, 0.5);
