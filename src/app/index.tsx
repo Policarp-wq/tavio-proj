@@ -1,6 +1,8 @@
-import * as styles from "../styles/index.module.scss";
+import { Header } from "../components/Header";
+import { SearchBar } from "../components/SearchBar";
 import clsx from 'clsx';
 
 export const App = () => {
-    return <button className={styles.button}>sasas</button>
+    // window.innerWidth | order in css
+    return <Header></Header>
 }
