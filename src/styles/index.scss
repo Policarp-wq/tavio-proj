@@ -1,15 +1,31 @@
 @use "~normalize.css" as *;
 @use "./variables.module.scss" as v;
+@font-face {
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: bold;
+    src: url("../assets/fonts/Comfortaa-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../assets/fonts/Comfortaa-Regular.ttf") format("truetype");
+}
 ul{
     margin: 0;
     padding: 0;
     list-style: none;
 }
+*{
+    box-sizing: border-box;
+}
 h1,h2,h3,p,div{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Comfortaa', monospace;
     padding: 0;
     margin: 0;
     font-size: v.$font-size;
+    color: v.$text-color;
 }
 body {
     min-height: 100vh;

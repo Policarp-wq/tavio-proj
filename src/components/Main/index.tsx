@@ -14,7 +14,10 @@ export const Main = () =>{
     return(
         <main className={style.main}>
             <AsideMenu items={elements}></AsideMenu>
-            <OffersPreviewList offers={mockOffers}/>
+            <div>
+                <h2 className={style.main__title}>Может заинтересовать</h2>
+                <OffersPreviewList offers={mockOffers}/>
+            </div>
             <div>jsdjf;fsdj;sfdklj</div>
         </main>
     )

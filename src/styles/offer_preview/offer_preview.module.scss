@@ -4,18 +4,37 @@
 .offer-preview-list{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    @if v.$device == small{
+        grid-template-columns: 1fr;
+    }
     padding: v.$padding-default;
     gap: v.$padding-default;
     max-height: 400px;
 }
+$image-width: 345px;
+$image-height: 310px;
+$font-size: 24px;
+@if v.$device == small{
+    $image-width: 254px;
+    $image-height: 185px;
+}
 
 .offer-preview{
-    border: 1px solid red;
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: clip;
     display: grid;
+    width: $image-width;
     grid-template-rows: repeat(auto, 4);
     gap: 0;
-    p{
-        font-size: v.$preview-font-size;
+    &__description{
+        @include m.flex-dir(column);
+        row-gap: 14px;
+        padding: v.$padding-default;
+        width: $image-width;
+        p{
+            font-size: $font-size;
+        }
     }
     &__price{
         font-weight: bold;
@@ -24,8 +43,10 @@
         }
     }
     &__image{
-        max-width: 345px;
-        margin-bottom: 16px;
+        width: $image-width;
+        height: $image-height;
+        margin-bottom: 6px;
+        border-bottom: 1px solid gray
     }
     &__header{
         @include m.flex-dir(row);
@@ -43,4 +64,5 @@
         overflow: hidden;
         white-space: nowrap;
     }
+    
 }

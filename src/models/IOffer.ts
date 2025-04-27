@@ -18,7 +18,8 @@ export interface IOfferPreview{
     images: string[],
     description: string,
     category: Category,
-    address: string
+    address: string,
+    liked: boolean
 }
 
 export interface IOfferRegisterInfo{

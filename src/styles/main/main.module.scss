@@ -2,9 +2,17 @@
 @use "../mixins.module.scss" as m;
 
 .main{
-   background-color: #cfcfcf;
    flex-grow: 1;
    max-width: 100vw;
    display: grid;
    grid-template-columns: auto min-content auto;
+   column-gap: 26px;
+   &__title{
+      $title-size: 42px;
+      @if v.$device == small{
+         $title-size: 20px;
+      }
+      font-weight: bold;
+      font-size: 42px;
+   }
 }
