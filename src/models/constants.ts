@@ -27,7 +27,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Ремонт техники",
     price: 2000,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Чиним телефоны, ноутбуки и другую электронику",
     category: "Услуга",
     address: "Санкт-Петербург, Невский проспект, 50",
@@ -36,7 +36,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Зимняя куртка",
     price: 3500,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Теплая и стильная куртка на зиму",
     category: "Одежда",
     address: "Екатеринбург, ул. Мира, 22",
@@ -45,7 +45,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Фары на BMW",
     price: 8000,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Оригинальные фары в отличном состоянии",
     category: "Запчасти",
     address: "Казань, ул. Баумана, 15",
@@ -54,7 +54,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Настольная лампа",
     price: 1200,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Удобная лампа для рабочего стола",
     category: "Другое",
     address: "Нижний Новгород, ул. Горького, 18",
@@ -63,7 +63,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Услуги грузчиков",
     price: 1500,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Переезды, доставка, погрузка — быстро и аккуратно",
     category: "Услуга",
     address: "Новосибирск, Красный проспект, 30",
@@ -72,7 +72,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Кожаные ботинки",
     price: 5000,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Новые, 42 размер, не подошли",
     category: "Одежда",
     address: "Челябинск, ул. Труда, 5",
@@ -81,7 +81,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Лобовое стекло",
     price: 6000,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Для Toyota Camry, без трещин",
     category: "Запчасти",
     address: "Ростов-на-Дону, ул. Пушкинская, 12",
@@ -90,7 +90,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Детская коляска",
     price: 9000,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Состояние отличное, почти не использовалась",
     category: "Транспорт",
     address: "Самара, ул. Победы, 3",
@@ -99,7 +99,7 @@ export const mockOffers: IOfferPreview[] = [
   {
     name: "Курс английского языка",
     price: 2500,
-    images: [],
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
     description: "Индивидуальные занятия онлайн",
     category: "Услуга",
     address: "Пермь, ул. Ленина, 77",

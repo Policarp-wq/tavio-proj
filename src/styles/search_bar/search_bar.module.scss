@@ -1,0 +1,33 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.search-bar{
+    @include m.flex-dir(row);
+    $search-text-size: 24px;
+    @if v.$device == small{
+        $search-text-size: 16px; 
+    }
+    font-size: $search-text-size;
+    justify-content: center;
+    &__field{
+        max-width: 1200px;
+        border-color: v.$coal-color;
+        flex-grow: 1;
+        border-radius: v.$border-radius;
+        padding: 10px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+    }
+    &__find-btn{
+        border-color: v.$coal-color;
+        border-left: none;
+        border-top-right-radius: v.$border-radius;
+        border-bottom-right-radius: v.$border-radius;
+        background-color: v.$aside-backgroud;
+        &:hover{
+            @include m.hover-effect();
+        }
+    }
+    
+}

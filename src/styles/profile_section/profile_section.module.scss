@@ -1,0 +1,38 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.profile-section{
+    $avatar-dim: 64px;
+    $name-font-size: 40px;
+    padding: 10px;
+    @if v.$device == small{
+        $avatar-dim: 48px;
+        $font-size: 16px;
+    }
+    @include m.flex-dir(row);
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    &__avatar{
+        width: $avatar-dim;
+        height: $avatar-dim;
+        border-radius: 50%;
+        border: 1px solid gray
+    }
+    &__name{
+        font-size: $name-font-size;
+        @include m.hover-effect;
+        &:hover{
+            color: v.$ref-text-color;
+        }
+    }
+    &__offer-create{
+        font-size: v.$font-size;
+        color: v.$ref-text-color;
+        font-weight: 400;
+        @include m.hover-effect;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

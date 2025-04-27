@@ -1,5 +1,5 @@
 import { SyntheticEvent, useEffect, useRef } from "react";
-import * as styles from "../../styles/index.module.scss";
+import * as style from "../../styles/search_bar/search_bar.module.scss";
 
 export type TSearchBarProps = {
     placeholder?: string;
@@ -15,7 +15,8 @@ export const SearchBar = ({placeholder = "Поиск по объявлениям
             onInput?.(inputRef.current.value);
         }
     }
-    const handleSearch = ()=>{
+    const handleSearch = (e: SyntheticEvent)=>{
+        e.preventDefault();
         if(inputRef.current && inputRef.current.value){
             onSearch(inputRef.current.value);
             if(clearOnSearch)
@@ -23,10 +24,10 @@ export const SearchBar = ({placeholder = "Поиск по объявлениям
         }
     }
     return (
-        <div>
-            <input ref={inputRef} placeholder={placeholder} onInput={handleInput}></input>
-            <button onClick={handleSearch}>Найти</button>
-        </div>
+        <form className={style["search-bar"]} onSubmit={handleSearch}>
+            <input className={style["search-bar__field"]} ref={inputRef} placeholder={placeholder} onInput={handleInput}></input>
+            <button type="submit" className={style["search-bar__find-btn"]}>Найти</button>
+        </form>
     );
     
 }

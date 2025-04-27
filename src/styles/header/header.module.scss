@@ -2,5 +2,13 @@
 @use "../mixins.module.scss" as m;
 
 .header{
-    @include m.flex-dir(row)
+    display: grid;
+    grid-template-columns: min-content 1fr max-content;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid v.$coal-color;
+    margin-bottom: 24px;
+    padding: 10px;
+    gap: 16px;
 }
+
