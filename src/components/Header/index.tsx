@@ -1,4 +1,4 @@
-import { ReactHTMLElement, ReactNode } from "react";
+import { ReactHTMLElement, ReactNode, useEffect } from "react";
 import { DropDown, } from "../DropDown";
 import { Logo } from "../Logo";
 import { SearchBar } from "../SearchBar";

@@ -5,11 +5,12 @@ export interface IOffer{
     id: string,
     name: string,
     price: number,
-    owner: IUser,
+    ownerId: string,
     images: string[],
     description: string,
     category: Category,
-    address: string
+    address: string,
+    publishDate: Date
 }
 
 export interface IOfferPreview{

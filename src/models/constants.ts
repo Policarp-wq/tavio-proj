@@ -14,7 +14,140 @@ export const User: IUser = {
   iconUrl: "https://static.wikia.nocookie.net/deltatraveler/images/f/fb/Ralsei.png"
 }
 
-export const mockOffers: IOfferPreview[] = [
+export const mockOffers: IOffer[] = [
+  {
+    id: "1",
+    ownerId: "1",
+    name: "Продажа авто",
+    price: 450000,
+    images: ["https://gouggi.ru/wa-data/public/shop/products/92/17/1792/images/12488/12488.970.jpg"],
+    description: "Надежная машина для города и трассы",
+    category: "Транспорт",
+    address: "Москва, ул. Ленина, 10",
+    publishDate: new Date("2024-05-22"),  
+  
+  },
+  {
+    id: "1",
+    ownerId: "1",
+    name: "Ремонт техники",
+    price: 2000,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Чиним телефоны, ноутбуки и другую электронику",
+    category: "Услуга",
+    address: "Санкт-Петербург, Невский проспект, 50",
+    
+    publishDate: new Date("2024-05-22"),
+  
+  },
+  {
+    id: "1",
+    ownerId: "2",
+    name: "Зимняя куртка",
+    price: 3500,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Теплая и стильная куртка на зиму",
+    category: "Одежда",
+    address: "Екатеринбург, ул. Мира, 22",
+    
+    publishDate: new Date("2024-05-22"),
+  
+  },
+  {
+    id: "1",
+    ownerId: "2",
+    name: "Фары на BMW",
+    price: 8000,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Оригинальные фары в отличном состоянии",
+    category: "Запчасти",
+    address: "Казань, ул. Баумана, 15",
+    
+    publishDate: new Date("2024-05-22"),
+  
+  },
+  {
+    id: "1",
+    ownerId: "3",
+    name: "Настольная лампа",
+    price: 1200,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Удобная лампа для рабочего стола",
+    category: "Другое",
+    address: "Нижний Новгород, ул. Горького, 18",
+    
+    publishDate: new Date("2024-05-22"),
+  
+  },
+  {
+    id: "1",
+    ownerId: "1",
+    name: "Услуги грузчиков",
+    price: 1500,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Переезды, доставка, погрузка — быстро и аккуратно",
+    category: "Услуга",
+    address: "Новосибирск, Красный проспект, 30",
+    
+    publishDate: new Date("2024-05-22"),
+  
+  },
+  {
+    id: "1",
+    ownerId: "3",
+    name: "Кожаные ботинки",
+    price: 5000,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Новые, 42 размер, не подошли",
+    category: "Одежда",
+    address: "Челябинск, ул. Труда, 5",
+    
+    publishDate: new Date("2024-05-22"),
+  
+  },
+  {
+    id: "1",
+    ownerId: "2",
+    name: "Лобовое стекло",
+    price: 6000,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Для Toyota Camry, без трещин",
+    category: "Запчасти",
+    address: "Ростов-на-Дону, ул. Пушкинская, 12",
+    
+    publishDate: new Date("2024-05-22"),
+  
+  },
+  {
+    id: "1",
+    ownerId: "2",
+    name: "Детская коляска",
+    price: 9000,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Состояние отличное, почти не использовалась",
+    category: "Транспорт",
+    address: "Самара, ул. Победы, 3",
+    publishDate: new Date("2024-05-22"),  
+  
+  },
+  {
+    id: "1",
+    ownerId: "2",
+    name: "Курс английского языка",
+    price: 2500,
+    images: ["https://i5.walmartimages.com/seo/Ralsei-Plush-Deltarune-Ralsei-Plushie-Dolls-9-8-Cute-Stuffed-Animal-Ralsei-Plush-Toys-Cartoon-Soft-Stuffed-Ralsei-Collection-Toys-Birthday-Gifts-Kids_c6bc177d-7dcf-468b-b575-adb37ec44788.f29474b53f350f272f3c47a234d920b5.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF"],
+    description: "Индивидуальные занятия онлайн",
+    category: "Услуга",
+    publishDate: new Date("2024-05-22"),  address: "Пермь, ул. Ленина, 77",
+  
+  },
+]
+
+
+
+
+
+export const mockOfferPreviews: IOfferPreview[] = [
   {
     name: "Продажа авто",
     price: 450000,

@@ -3,6 +3,7 @@ import { IOffer, IOfferPreview } from "../../models/IOffer"
 import * as style from "../../styles/offer_preview/offer_preview.module.scss"
 import emptyStar from '../../assets/images/star-empty.svg';
 import filledStar from '../../assets/images/star-filled.svg';
+import { getPreviewImage } from "../../models/Utils/utils";
 
 export type TOffersPreviewListProps = {
     offers: IOfferPreview[]
@@ -21,7 +22,7 @@ export type TOfferPreviewProps = {
 }
 
 export const OfferPreview = ({offer} : TOfferPreviewProps) =>{
-    const image = offer.images.length > 0 ? offer.images[0] : NO_IMAGE;
+    const image = getPreviewImage(offer.images);
     return (
         <li className={style["offer-preview"]}>
             <img className={style["offer-preview__image"]} src={image}/>

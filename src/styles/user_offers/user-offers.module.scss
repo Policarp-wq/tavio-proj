@@ -1,0 +1,40 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.user-offers-area{
+    @include m.flex-dir(column);
+    align-items: center;
+    border-left: 1px solid v.$coal-color;
+    border-bottom: 1px solid v.$coal-color;
+    padding: v.$padding-default;
+    &__title{
+        margin-bottom: 16px;
+        text-align: center;
+        border-bottom: 2px solid v.$coal-color;
+        width: 100%;
+    }
+}
+
+.user-offers-list{
+    @include m.flex-dir(column);
+}
+
+.user-offer{
+    @include m.flex-dir(row);
+    &__image{
+        $dim: 168px;
+        width: $dim;
+        height: $dim;
+    }
+    &__description{
+        @include m.flex-dir(column);
+        font-size: 2px;
+    }
+    &__name{
+        color: v.$ref-text-color;
+    }
+    &__price{
+        font-weight: bold;
+
+    }
+}

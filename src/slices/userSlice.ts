@@ -1,13 +1,19 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { IUser } from "../models/IUser"
+import { IOfferApi, OfferApi } from "../models/IOfferApi"
+import { Api } from "../models/Utils/Api"
+import { IOfferPreview } from "../models/IOffer"
 
 export interface IUserState{
     user?: IUser,
+    offers: IOfferPreview[],
     authed: boolean
 }
 const initialState: IUserState = {
-    authed: false
+    authed: false,
+    offers: []
 }
+
 
 export const userSlice = createSlice({
     name: "user",
