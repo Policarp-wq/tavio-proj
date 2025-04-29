@@ -4,7 +4,7 @@ import { IOffer } from "../../models/IOffer"
 import * as style from "../../styles/user_offers/user-offers.module.scss"
 import { useEffect } from "react"
 import { fetchOffers, selectUsersOffers } from "../../slices/offerSlice"
-import { getPreviewImage } from "../../models/Utils/utils"
+import { getFormattedDate, getPreviewImage } from "../../models/Utils/utils"
 
 export type TUserOffersProps = {
     // offers: IOffer[]
@@ -39,7 +39,7 @@ export const UserOffer = ({offer, key} : TUserOfferProps) =>{
             <div className={style["user-offer__description"]}>
                 <h3 className={style["user-offer__name"]}>{offer.name}</h3>
                 <p className={style["user-offer__price"]}>{offer.price}</p>
-                <p>{"Опубликовано:" + offer.publishDate.toUTCString()}</p>
+                <p className={style["user-offer__date"]}>{"Опубликовано:\n" + getFormattedDate(offer.publishDate)}</p>
             </div>
         </li>
     )

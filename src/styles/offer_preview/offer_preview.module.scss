@@ -1,18 +1,15 @@
 @use "../variables.module.scss" as v;
 @use "../mixins.module.scss" as m;
-
+$image-width: 335px;
+$image-height: 300px;
 .offer-preview-list{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    @if v.$device == small{
-        grid-template-columns: 1fr;
-    }
+    grid-template-columns: repeat(auto-fit, $image-width);
     padding: v.$padding-default;
     gap: v.$padding-default;
-    max-height: 400px;
 }
-$image-width: 345px;
-$image-height: 310px;
+
+
 $font-size: 24px;
 @if v.$device == small{
     $image-width: 254px;

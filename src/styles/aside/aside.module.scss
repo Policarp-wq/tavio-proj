@@ -10,11 +10,14 @@
     border-radius: 0 v.$border-radius v.$border-radius 0;
     color: v.$text-color-inverted;
     background-color: v.$aside-backgroud;
+   
     &__title{
         color: v.$text-color;
         cursor: default
     }
     &__list{
+        position: sticky;
+        top: 15px;
         @include m.column-center;
         width: 100%;
         padding-top: v.$padding-default;

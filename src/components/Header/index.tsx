@@ -16,10 +16,10 @@ export const Header = () => {
     const dispatch = useDispatch<AppDispatch>();
     dispatch(loginUser(User));
     return (
-        <div className={style.header}>
+        <header className={style.header}>
             <Logo/>
             <SearchBar onSearch={(s) => alert(s)} clearOnSearch={true}/>
             <ProfileSection></ProfileSection>
-        </div>
+        </header>
     );
 }
