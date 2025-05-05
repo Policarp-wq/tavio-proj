@@ -1,0 +1,107 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+$header-font: 42px;
+.offer-page{
+    @include m.flex-dir(row);
+    justify-content: center;
+    flex-grow: 1;
+    &__content{
+        padding: 57px;
+        padding-top: 78px;
+        display: grid;
+        grid-template-columns: min-content auto;
+        grid-template-rows: max-content max-content max-content max-content auto;
+        grid-template-areas:
+        "title price"
+        "img stats"
+        "img btns"
+        "stack _"
+        "descr _";
+        background-color: v.$offer-background;
+        width: max-content;
+        column-gap: 56px;
+    }
+    &__stats{
+        width: min(fit-content, 80%);
+        grid-area: stats;
+        justify-self: end;
+    }
+    &__title{
+        display: block;
+        font-size: $header-font;
+        grid-area: title;
+        margin-bottom: 17px;
+    }
+    &__price{
+        grid-area: price;
+        justify-self: end;
+        font-size: $header-font;
+    }
+    &__offer-image{
+        grid-area: img;
+        width: 40vw;
+        border: 1px solid v.$coal-color;
+        .selected{
+            border: 2px solid red;
+        }
+    }
+    &__buttons{
+        grid-area: btns;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        justify-self: end;
+        width: 100%;
+        max-width: 500px;
+        height: max-content;
+        align-self: flex-end;
+        gap: 10px;
+        .button{
+            width: 100%;
+            height: min-content;
+            background-color: transparent;
+            border-radius: v.$border-radius;
+            font-size: 24px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            color: v.$text-color-inverted;
+            &_neutral{
+                background-color: v.$neutral-color;
+            }
+            &_positive{
+                background-color: v.$positive-color;
+            }
+            &_negative{
+                background-color: v.$negative-color;
+            }
+            @include m.hover-effect();
+        }
+
+    }
+    $image_dim: 72px;
+    &__stack{
+        grid-area: stack;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, $image_dim);
+        row-gap: 10px;
+        gap: 10px;
+        align-items: center;
+        padding: v.$padding-default;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    &__description{
+        grid-area: descr;
+        font-size: 22px;
+        line-height: 36px;
+    }
+    &__stack-image{
+        width: $image_dim;
+        height: $image_dim;
+        background-color: white;
+        object-fit:contain;
+        &_selected{
+            border: 1px solid #2C09F4;
+        }
+    }
+}

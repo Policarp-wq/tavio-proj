@@ -1,0 +1,34 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+
+.user-stats{
+    @include m.flex-dir(column);
+    font-size: 20px;
+    background-color: white;
+    flex-grow: 1;
+    width: 100%;
+    padding: v.$padding-default;
+    padding-top: 6px;
+    gap: 10px;
+    font-weight: bold;
+    &__title{
+        @include m.flex-dir(row);
+        justify-content: space-between;
+        align-items: center;
+        color: v.$ref-text-color;
+        padding: 6px;
+        border-radius: 15px;
+        &:hover{
+            background-color: v.$offer-background;
+        }
+    }
+    &__avatar{
+        width: 64px;
+        height: 64px;
+        border: 1px solid v.$coal-color
+    }
+    &__name{
+        font-size: 24px;
+    }
+}

@@ -11,24 +11,23 @@ import { fetchOffers, selectUsersOffers } from "../../slices/offerSlice"
 import { AppDispatch, RootState } from "../../store/store"
 import { IOffer } from "../../models/IOffer"
 import { UserOffers } from "../UserOffers"
+import { OfferPage } from "../OfferPage"
 
 export const Main = () =>{
-    const elements: MenuElement[] = Categories.map(c => ({
-        body: c,
-        text: c
-    }));
+    
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(fetchOffers());
     }, [dispatch])
     return(
-        <main className={style.main}>
-            <AsideMenu items={elements}></AsideMenu>
-            <div>
-                <h2 className={style.main__title}>Может заинтересовать</h2>
-                <OffersPreviewList offers={mockOfferPreviews}/>
-            </div>
-            <UserOffers/>
-        </main>
+        <OfferPage/>
+        // <main className={style.main}>
+        //     <AsideMenu></AsideMenu>
+        //     <div>
+        //         <h2 className={style.main__title}>Может заинтересовать</h2>
+        //         <OffersPreviewList offers={mockOfferPreviews}/>
+        //     </div>
+        //     <UserOffers/>
+        // </main>
     )
 }

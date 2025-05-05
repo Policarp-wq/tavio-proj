@@ -2,7 +2,7 @@
 @use "../mixins.module.scss" as m;
 
 .profile-section{
-    $avatar-dim: 64px;
+
     $name-font-size: 40px;
     padding: 10px;
     @if v.$device == small{
@@ -13,12 +13,6 @@
     justify-content: space-between;
     gap: 16px;
     align-items: center;
-    &__avatar{
-        width: $avatar-dim;
-        height: $avatar-dim;
-        border-radius: 50%;
-        border: 1px solid gray
-    }
     &__name{
         font-size: $name-font-size;
         @include m.hover-effect;

@@ -2,12 +2,17 @@ import { useState } from "react"
 import { MenuElement } from "../../models/Types/types"
 import clsx from "clsx"
 import * as style from "../../styles/aside/aside.module.scss"
+import { Categories } from "../../models/Category"
 
 export type TAsideMenuProps = {
-    items: MenuElement[]
+    
 }
 
-export const AsideMenu = ({items} : TAsideMenuProps) => {
+export const AsideMenu = ({} : TAsideMenuProps) => {
+    const items: MenuElement[] = Categories.map(c => ({
+        body: c,
+        text: c
+    }));
     const [opened, setOpened] = useState(false);
     console.log(style)
     return(

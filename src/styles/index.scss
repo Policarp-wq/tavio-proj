@@ -19,6 +19,7 @@ ul{
 }
 *{
     box-sizing: border-box;
+    // border: 1px solid red;;
 }
 a{
     text-decoration: none;
@@ -30,7 +31,6 @@ h1,h2,h3,p,div{
     font-family: 'Comfortaa', monospace;
     padding: 0;
     margin: 0;
-    font-size: v.$font-size;
     color: v.$text-color;
 }
 body {

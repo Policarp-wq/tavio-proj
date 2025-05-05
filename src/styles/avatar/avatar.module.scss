@@ -1,0 +1,18 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+$avatar-dim: 64px;
+.avatar{
+    width: $avatar-dim;
+    height: $avatar-dim;
+    border-radius: 50%;
+    border: 1px solid v.$coal-color;
+}
+
+.no-image{
+    width: $avatar-dim;
+    height: $avatar-dim;
+    border-radius: 50%;
+    border: 1px solid v.$coal-color;
+    background-color: v.$coal-color;
+}
