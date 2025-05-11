@@ -12,22 +12,19 @@ import { AppDispatch, RootState } from "../../store/store"
 import { IOffer } from "../../models/IOffer"
 import { UserOffers } from "../UserOffers"
 import { OfferPage } from "../OfferPage"
+import { HubPage } from "../HubPage"
+import { UserForm } from "../UserForm"
+import { OfferEditPage } from "../OfferEditPage"
+export type TMainProps = {
+    query: string;
+}
 
-export const Main = () =>{
-    
-    const dispatch = useDispatch<AppDispatch>();
-    useEffect(() => {
-        dispatch(fetchOffers());
-    }, [dispatch])
+export const Main = ({query}: TMainProps) =>{
     return(
-        <OfferPage/>
-        // <main className={style.main}>
-        //     <AsideMenu></AsideMenu>
-        //     <div>
-        //         <h2 className={style.main__title}>Может заинтересовать</h2>
-        //         <OffersPreviewList offers={mockOfferPreviews}/>
-        //     </div>
-        //     <UserOffers/>
-        // </main>
+        <main>
+            {/* <HubPage query={query}/> */}
+            {/* <UserForm state="Register"/> */}
+            <OfferEditPage/>
+        </main>
     )
 }

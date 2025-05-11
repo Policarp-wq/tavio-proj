@@ -12,13 +12,20 @@ import { AppDispatch } from "../../store/store";
 import { loginUser } from "../../slices/userSlice";
 import { User } from "../../models/constants";
 
-export const Header = () => {
+export type THeaderProps = {
+    onSearchChange: (s: string) => void
+}
+
+export const Header = ({onSearchChange} : THeaderProps) => {
     const dispatch = useDispatch<AppDispatch>();
     dispatch(loginUser(User));
+    const handleSearch = (s: string) =>{
+        onSearchChange(s);
+    };
     return (
         <header className={style.header}>
             <Logo/>
-            <SearchBar onSearch={(s) => alert(s)} clearOnSearch={true}/>
+            <SearchBar onSearch={handleSearch} clearOnSearch={true}/>
             <ProfileSection></ProfileSection>
         </header>
     );

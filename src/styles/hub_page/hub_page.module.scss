@@ -1,0 +1,18 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.hub-page{
+    display: grid;
+   grid-template-columns: min-content auto min-content;
+   column-gap: 26px;
+   position: relative;
+   flex-grow: 1;
+   &__title{
+      $title-size: 36px;
+      @if v.$device == small{
+         $title-size: 20px;
+      }
+      font-weight: bold;
+      font-size: $title-size;
+   }
+}

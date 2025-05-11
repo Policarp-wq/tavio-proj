@@ -27,7 +27,7 @@ export const OfferPage = () => {
     }
     const [curImage, setImg] = useState(getPreviewImage(offer.images));
     return (
-        <main className={style["offer-page"]}>
+        <div className={style["offer-page"]}>
             <div className={style["offer-page__content"]}>
                     <h2 className={style["offer-page__title"]}>{offer.name}</h2>
                     <h3 className={style["offer-page__price"]}>{offer.price + "₽"}</h3>
@@ -52,6 +52,6 @@ export const OfferPage = () => {
             <p className={style["offer-page__description"]}>{offer.description}</p>
             </div>
             
-        </main>
+        </div>
     )
 }

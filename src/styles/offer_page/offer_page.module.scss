@@ -5,7 +5,6 @@ $header-font: 42px;
 .offer-page{
     @include m.flex-dir(row);
     justify-content: center;
-    flex-grow: 1;
     &__content{
         padding: 57px;
         padding-top: 78px;
@@ -80,15 +79,7 @@ $header-font: 42px;
     }
     $image_dim: 72px;
     &__stack{
-        grid-area: stack;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, $image_dim);
-        row-gap: 10px;
-        gap: 10px;
-        align-items: center;
-        padding: v.$padding-default;
-        padding-left: 0;
-        padding-right: 0;
+        @include m.stacked($image_dim);
     }
     &__description{
         grid-area: descr;

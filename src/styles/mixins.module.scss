@@ -23,3 +23,32 @@
         color: v.$ref-text-color;
     }
 }
+@mixin rounded-input{
+    border-color: v.$coal-color;
+    flex-grow: 1;
+    border-radius: v.$border-radius;
+    padding: 10px;
+}
+@mixin rounded-button{
+    width: 100%;
+    height: min-content;
+    background-color: transparent;
+    border-radius: v.$border-radius;
+    font-size: 24px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+@mixin stacked ($dim){
+    grid-area: stack;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, $dim);
+    row-gap: 10px;
+    gap: 10px;
+    align-items: center;
+    padding: v.$padding-default;
+    padding-left: 0;
+    padding-right: 0;
+}

@@ -17,7 +17,8 @@ export const SearchBar = ({placeholder = "Поиск по объявлениям
     }
     const handleSearch = (e: SyntheticEvent)=>{
         e.preventDefault();
-        if(inputRef.current && inputRef.current.value){
+        if(inputRef.current){
+            console.log("Search " + inputRef.current.value)
             onSearch(inputRef.current.value);
             if(clearOnSearch)
                 inputRef.current.value="";

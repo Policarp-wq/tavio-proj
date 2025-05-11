@@ -18,7 +18,7 @@ export const UserOffers = ({} : TUserOffersProps) =>{
             <h3 className={style["user-offers-area__title"]}>Мои объявления</h3>
             {user.authed ? 
             <ul className={style["user-offers-list"]}>
-                {offers.map((val, ind) => <UserOffer offer={val} key={ind}/>)}
+                {offers.map((val, ind) => <UserOffer offer={val} index={ind}/>)}
             </ul>
                 
             :
@@ -29,12 +29,12 @@ export const UserOffers = ({} : TUserOffersProps) =>{
 }
 export type TUserOfferProps = {
     offer: IOffer,
-    key: number
+    index: number
 };
-export const UserOffer = ({offer, key} : TUserOfferProps) =>{
+export const UserOffer = ({offer, index} : TUserOfferProps) =>{
     const image = getPreviewImage(offer.images);
     return (
-        <li className={style["user-offer"]} key={key}>
+        <li className={style["user-offer"]} key={index}>
             <img src={image} alt="offer_iamge" className={style["user-offer__image"]}/>
             <div className={style["user-offer__description"]}>
                 <h3 className={style["user-offer__name"]}>{offer.name}</h3>

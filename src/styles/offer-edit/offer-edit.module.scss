@@ -1,0 +1,67 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.offer-edit{
+    @include m.flex-dir(column);
+    flex-grow: 1;
+    justify-self: center;
+    width: 60%;
+    justify-content: center;
+    background-color: v.$offer-background;
+    $font-size: 30px;
+    padding: 10px 60px;
+    justify-content: space-between;
+    height: 100%;
+    @if (v.$device == small){
+        $font-size: 24px
+    }
+    &__title{
+        font-size: $font-size;
+        align-self: center;
+    }
+    label, button{
+        font-size: $font-size;
+    }
+    label{
+        @include m.flex-dir(column);
+    }
+    &__confirm-button{
+        @include m.rounded-button;
+        background-color: v.$positive-color;
+        width: 40%;
+        align-self: center;
+    }
+    &__input{
+        width: 100%;
+        @include m.rounded-input;
+        color: black;
+        max-width: 80%;
+    }
+    $image_dim: 64px;
+    &__img-stack{
+        @include m.stacked($image_dim);
+        max-width: 80%;
+        padding-left: 5px;
+        margin-bottom: 50px;
+    }
+    &__img{
+        width: $image_dim;
+        height: $image_dim;
+        object-fit: contain;
+        background-color: white;
+    }
+
+    &__camera-btn{
+        background: none;
+        border: none;
+        padding: 0;
+        img{
+            width: $image_dim;
+            height: $image_dim;
+            
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
