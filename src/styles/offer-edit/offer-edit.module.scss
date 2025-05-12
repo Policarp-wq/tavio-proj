@@ -10,8 +10,9 @@
     background-color: v.$offer-background;
     $font-size: 30px;
     padding: 10px 60px;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 100%;
+    gap: 10px;
     @if (v.$device == small){
         $font-size: 24px
     }
