@@ -20,7 +20,7 @@
 @mixin hover-effect{
     &:hover{
         cursor: pointer;
-        color: v.$ref-text-color;
+        color: whitesmoke;
     }
 }
 @mixin rounded-input{
@@ -40,6 +40,13 @@
     &:hover{
         cursor: pointer;
     }
+    &:disabled{
+        color: v.$faded-color;
+        &:hover{
+            cursor: not-allowed;
+            color: v.$faded-color;
+        } 
+    }
 }
 @mixin stacked ($dim){
     grid-area: stack;
@@ -51,4 +58,17 @@
     padding: v.$padding-default;
     padding-left: 0;
     padding-right: 0;
+}
+@mixin form{
+    @include flex-dir(column);
+    flex-grow: 1;
+    justify-self: center;
+    
+    justify-content: center;
+    background-color: v.$offer-background;
+    
+    justify-content: flex-start;
+    height: 100%;
+    gap: 10px;
+    
 }

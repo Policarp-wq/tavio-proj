@@ -1,0 +1,11 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.auth-form{
+    &__buttons{
+        @include m.flex-dir(column);
+        justify-self: flex-end;
+        margin-top: auto;
+        gap: 30px;
+    }
+}

@@ -1,0 +1,50 @@
+@use "../variables.module.scss" as v;
+@use "../mixins.module.scss" as m;
+
+.user-form{
+    @include m.form;
+    width: 30%;
+    $font-size: 30px;
+    padding: 10px 60px;
+    font-size: $font-size;
+    @if (v.$device == small){
+        $font-size: 24px
+    }
+    label, button{
+        font-size: $font-size;
+    }
+    label{
+        @include m.flex-dir(column);
+    }
+    &__title{
+        font-size: $font-size;
+    }
+    
+    &__button{
+        @include m.rounded-button;
+        @include m.hover-effect;
+        width: max(40%, max-content);
+        align-self: center;
+        &:hover{
+            color: whitesmoke;
+        }
+        &_positive{
+            background-color: v.$positive-color;
+        }
+        &_neutral{
+            background-color: v.$neutral-color;
+        }
+        &:disabled{
+            color: #00000037;
+            &:hover{
+                color: #00000037;
+            }
+        }
+    }
+    &__input{
+        height: max-content;
+        @include m.rounded-input;
+        color: black;
+        max-width: 80%;
+    }
+}

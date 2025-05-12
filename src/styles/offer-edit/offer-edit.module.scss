@@ -3,16 +3,11 @@
 
 .offer-edit{
     @include m.flex-dir(column);
-    flex-grow: 1;
-    justify-self: center;
+    @include m.form;
     width: 60%;
-    justify-content: center;
-    background-color: v.$offer-background;
     $font-size: 30px;
     padding: 10px 60px;
-    justify-content: flex-start;
-    height: 100%;
-    gap: 10px;
+
     @if (v.$device == small){
         $font-size: 24px
     }
@@ -29,11 +24,10 @@
     &__confirm-button{
         @include m.rounded-button;
         background-color: v.$positive-color;
-        width: 40%;
+        width: max(40%, max-content);
         align-self: center;
     }
     &__input{
-        width: 100%;
         @include m.rounded-input;
         color: black;
         max-width: 80%;

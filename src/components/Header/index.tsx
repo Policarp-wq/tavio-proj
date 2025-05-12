@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { loginUser } from "../../slices/userSlice";
 import { User } from "../../models/constants";
+import { ILogininfo } from "../../models/ILoginInfo";
 
 export type THeaderProps = {
     onSearchChange: (s: string) => void
@@ -18,7 +19,7 @@ export type THeaderProps = {
 
 export const Header = ({onSearchChange} : THeaderProps) => {
     const dispatch = useDispatch<AppDispatch>();
-    dispatch(loginUser(User));
+    // dispatch(loginUser({login: User} as ILogininfo));
     const handleSearch = (s: string) =>{
         onSearchChange(s);
     };
@@ -29,4 +30,4 @@ export const Header = ({onSearchChange} : THeaderProps) => {
             <ProfileSection></ProfileSection>
         </header>
     );
-}
+}            
