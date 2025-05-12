@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Header } from "../components/Header";
 import { SearchBar } from "../components/SearchBar";
 import clsx from 'clsx';

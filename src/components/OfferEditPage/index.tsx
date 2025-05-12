@@ -7,12 +7,14 @@ import * as style from "../../styles/offer-edit/offer-edit.module.scss";
 
 import camera from "../../assets/images/camera-icon.png";
 import clsx from "clsx";
+import { ProtectedElement } from "../ProtectedElement";
 
 export type TOfferEditPageProps = {
     init?: IOffer;
 };
 
 export const OfferEditPage = ({ init }: TOfferEditPageProps) => {
+
     const isEdit = init;
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const user = useSelector(getUserState);

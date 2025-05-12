@@ -15,6 +15,8 @@ import { OfferPage } from "../OfferPage"
 import { HubPage } from "../HubPage"
 import { UserForm } from "../UserForm"
 import { OfferEditPage } from "../OfferEditPage"
+import { Route, Routes } from "react-router-dom"
+import { ProtectedElement } from "../ProtectedElement"
 export type TMainProps = {
     query: string;
 }
@@ -22,9 +24,16 @@ export type TMainProps = {
 export const Main = ({query}: TMainProps) =>{
     return(
         <main>
+            <Routes>
+                <Route path="/" element={<HubPage query={query}/>}/>
+                <Route path="/register" element={<UserForm state="Register"/>}/>
+                <Route path="/login" element={<UserForm state="Auth"/>}/>
+                <Route path="/offer-edit" element={<ProtectedElement><OfferEditPage/></ProtectedElement> }/>
+
+            </Routes>
             {/* <HubPage query={query}/> */}
             {/* <UserForm state="Register"/> */}
-            <OfferEditPage/>
+            {/* <OfferEditPage/> */}
         </main>
     )
 }
