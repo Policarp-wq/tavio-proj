@@ -14,6 +14,7 @@ export interface IOffer{
 }
 
 export interface IOfferPreview{
+    id: string
     name: string,
     price: number,
     images: string[],

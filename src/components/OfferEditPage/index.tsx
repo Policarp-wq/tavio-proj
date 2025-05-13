@@ -1,20 +1,25 @@
 import { ChangeEvent, FormEvent, useRef, useState, useEffect } from "react";
-import { IOffer } from "../../models/IOffer";
-import { useSelector } from "react-redux";
-import { getUserState } from "../../store/store";
+import { IOffer, IOfferRegisterInfo } from "../../models/IOffer";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, getUserState, RootState } from "../../store/store";
 
 import * as style from "../../styles/offer-edit/offer-edit.module.scss";
 
 import camera from "../../assets/images/camera-icon.png";
 import clsx from "clsx";
 import { ProtectedElement } from "../ProtectedElement";
+import { OfferApi } from "../../models/IOfferApi";
+import { Api } from "../../models/Utils/Api";
+import { useNavigate, useParams } from "react-router-dom";
+import { selectOfferById, selectOffers } from "../../slices/offerSlice";
 
 export type TOfferEditPageProps = {
     init?: IOffer;
 };
 
-export const OfferEditPage = ({ init }: TOfferEditPageProps) => {
-
+export const OfferEditPage = ({ }: TOfferEditPageProps) => {
+    const {id} = useParams();
+    const init = useSelector<RootState, IOffer | undefined>((state) => selectOfferById(state, id ? id : "-1"));
     const isEdit = init;
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const user = useSelector(getUserState);
@@ -35,11 +40,21 @@ export const OfferEditPage = ({ init }: TOfferEditPageProps) => {
         const { name, value } = e.target;
         setOffer((prev) => ({ ...prev, [name]: value }));
     };
-
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         if (!isFormValid) return;
-        // Handle form submission logic here
+        const offerApi = new OfferApi(new Api(""));
+        if(isEdit){
+            offerApi.updteOffer(offer as IOfferRegisterInfo).then(
+            res => {navigate("/")}
+                ).catch(err => alert("Ошибка"));
+            return;
+        }
+        offerApi.createOffer(offer as IOfferRegisterInfo).then(
+            res => {navigate("/")}
+        ).catch(err => alert("Ошибка"));
     };
 
     const handleCameraClick = () => {

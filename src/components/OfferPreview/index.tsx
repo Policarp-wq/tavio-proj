@@ -13,24 +13,30 @@ export type TOffersPreviewListProps = {
 }
 
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { selectOffers } from "../../slices/offerSlice";
+import { useNavigate } from "react-router-dom";
 
 export const OffersPreviewList = ({ filter = "" }: TOffersPreviewListProps) => {
     const [searchResult, setSearchResult] = useState<JSX.Element[]>([]);
+    const offers = useSelector(selectOffers);
 
     useEffect(() => {
-        const api = new OfferApi(new Api(""));
-        api.getOffers().then(offers => {
-            const previews = offers.map(o => toOfferPreview(o, false));
-            setSearchResult(filterOffers(previews, filter).map((o, index) => (<OfferPreview key={index} index={index} offer={o} />)));
-        });
-    }, [filter]);
+        const previews = offers.map(o => toOfferPreview(o, false));
+        const filtered = filterOffers(previews, filter);
+        const result = filtered.map((o, index) => (
+            <OfferPreview key={index} index={index} offer={o} />
+        ));
+        setSearchResult(result);
+    }, [offers, filter]); 
 
     return (
         <ul className={style["offer-preview-list"]}>
             {searchResult.length > 0 ? searchResult : <h1>Ничего не найдено(</h1>}
         </ul>
     );
-}
+};
+
 
 export type TOfferPreviewProps = {
     offer: IOfferPreview,
@@ -39,8 +45,12 @@ export type TOfferPreviewProps = {
 
 export const OfferPreview = ({offer, index} : TOfferPreviewProps) =>{
     const image = getPreviewImage(offer.images);
+    const navigate = useNavigate();
+    const handleOfferClick = () => {
+        navigate(`/offer/${offer.id}`)
+    }
     return (
-        <li key={index} className={style["offer-preview"]}>
+        <li key={index} className={style["offer-preview"]} onClick={handleOfferClick}>
             <img className={style["offer-preview__image"]} src={image}/>
             <div className={style["offer-preview__description"]}>
             <div className={style["offer-preview__header"]}>

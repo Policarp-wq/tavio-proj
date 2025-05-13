@@ -48,10 +48,11 @@ export const offersSlice = createSlice({
     },
     selectors: {
         selectUsersOffers: (state: IOffersState, userId: string) => state.offers.filter(o => o.ownerId === userId),
-        selectOffers: (state: IOffersState) => state.offers
+        selectOffers: (state: IOffersState) => state.offers,
+        selectOfferById: (state: IOffersState, offerId: string) => state.offers.find(o => o.id === offerId)
     }
 })
 
 
-export const {selectUsersOffers, selectOffers} = offersSlice.selectors;
+export const {selectUsersOffers, selectOffers, selectOfferById} = offersSlice.selectors;
 export default offersSlice.reducer;

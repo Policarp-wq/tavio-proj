@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { mockOfferPreviews } from "../../models/constants"
+
 import * as style from "../../styles/hub_page/hub_page.module.scss"
 import { AsideMenu } from "../AsideMenu"
 import { OffersPreviewList } from "../OfferPreview"

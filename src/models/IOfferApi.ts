@@ -1,6 +1,6 @@
 import { OffersPreviewList } from "../components/OfferPreview";
 import { Category } from "./Category";
-import { mockOfferPreviews, mockOffers, User } from "./constants";
+import { User } from "./constants";
 import { ILogininfo } from "./ILoginInfo";
 import { IOffer, IOfferPreview, IOfferRegisterInfo } from "./IOffer";
 import { IRegisterInfo } from "./IRegisterInfo";
@@ -21,8 +21,9 @@ export interface IOfferApi{
     loginUser(info: ILogininfo): Promise<IUser>;
     //getUsersOffers(userId: string): Promise<IOfferPreview[]>;
 
-    // createOffer(info: IOfferRegisterInfo): boolean;
-    // updteOffer(info: IOfferRegisterInfo): boolean;
+    createOffer(info: IOfferRegisterInfo): Promise<boolean>;
+    updteOffer(info: IOfferRegisterInfo): Promise<boolean>;
+    getUser(userId: string): Promise<IUser>;
     getOffers(): Promise<IOffer[]>
 }
 
@@ -30,9 +31,33 @@ export class OfferApi implements IOfferApi{
     constructor(private _client: IApi) {
         
     }
+    getUser(userId: string): Promise<IUser> {
+        const user = Users.filter(u => u.id === userId);
+        if(user.length == 0)
+            return Promise.reject("Not found")
+        return Promise.resolve(user[0]);
+    }
+    createOffer(info: IOfferRegisterInfo): Promise<boolean> {
+        Offers.push({
+            ...info,
+            id: `o${Offers.length + 1}`,
+            address: "Не указан",
+            publishDate: new Date(),
+        });
+        return Promise.resolve(true);
+    }
+    updteOffer(info: IOfferRegisterInfo): Promise<boolean> {
+        const idx = Offers.findIndex(o => o.id === (info as any).id);
+        if (idx === -1) return Promise.resolve(false);
+        Offers[idx] = {
+            ...Offers[idx],
+            ...info,
+        };
+        return Promise.resolve(true);
+    }
     registerUser(info: IRegisterInfo): Promise<IUser> {
         const registredUser = {...info, rating: 0, registerDate: new Date(), id: (Users[Users.length - 1].id + "2"), iconUrl: ""};
-        alert(registredUser.id)
+        // alert(registredUser.id)
         Users.push(registredUser);
         return Promise.resolve(Users[-1]);
     }

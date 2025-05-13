@@ -5,6 +5,7 @@ import * as style from "../../styles/user_offers/user-offers.module.scss"
 import { useEffect } from "react"
 import { fetchOffers, selectUsersOffers } from "../../slices/offerSlice"
 import { getFormattedDate, getPreviewImage } from "../../models/Utils/utils"
+import clsx from "clsx"
 
 export type TUserOffersProps = {
     // offers: IOffer[]
@@ -12,7 +13,11 @@ export type TUserOffersProps = {
 
 export const UserOffers = ({} : TUserOffersProps) =>{
     const user = useSelector(getUserState);
-    const offers = useSelector<RootState, IOffer[]>((state) => selectUsersOffers(state, "2"));
+    let offers: IOffer[] = [];
+    if(user.authed && user.user){
+        offers = useSelector<RootState, IOffer[]>((state) => selectUsersOffers(state, user.user!.id));
+    }
+    
     return (
         <div className={style["user-offers-area"]}>
             <h3 className={style["user-offers-area__title"]}>Мои объявления</h3>
@@ -22,7 +27,7 @@ export const UserOffers = ({} : TUserOffersProps) =>{
             </ul>
                 
             :
-            <h2>Необходимо авторизоваться</h2>
+            <h2 className={clsx(style["user-offers-area__title"], style["user-offers-area__title_not-found"])}>Необходимо авторизоваться</h2>
             }
         </div>
     )

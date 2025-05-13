@@ -13,6 +13,11 @@
         text-align: center;
         border-bottom: 2px solid v.$coal-color;
         width: 100%;
+        &_not-found{
+            font-size: 16px;
+            border: none;
+            color: rebeccapurple;
+        }
     }
     &{
         position: sticky;

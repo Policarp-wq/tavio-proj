@@ -20,7 +20,6 @@
 @mixin hover-effect{
     &:hover{
         cursor: pointer;
-        color: whitesmoke;
     }
 }
 @mixin rounded-input{

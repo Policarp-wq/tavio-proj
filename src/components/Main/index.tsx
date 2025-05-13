@@ -4,7 +4,6 @@ import { AsideMenu } from "../AsideMenu"
 import * as style from "../../styles/main/main.module.scss"
 import { Categories, Category } from "../../models/Category"
 import { OffersPreviewList } from "../OfferPreview"
-import { mockOfferPreviews } from "../../models/constants"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { fetchOffers, selectUsersOffers } from "../../slices/offerSlice"
@@ -28,7 +27,9 @@ export const Main = ({query}: TMainProps) =>{
                 <Route path="/" element={<HubPage query={query}/>}/>
                 <Route path="/register" element={<UserForm state="Register"/>}/>
                 <Route path="/login" element={<UserForm state="Auth"/>}/>
-                <Route path="/offer-edit" element={<ProtectedElement><OfferEditPage/></ProtectedElement> }/>
+                <Route path="/offer/:id" element={<OfferPage/>}/>
+                <Route path="/offer-edit/:id" element={<ProtectedElement><OfferEditPage/></ProtectedElement> }/>
+                <Route path="/*" element={<h1>Not found</h1>}/>
 
             </Routes>
             {/* <HubPage query={query}/> */}

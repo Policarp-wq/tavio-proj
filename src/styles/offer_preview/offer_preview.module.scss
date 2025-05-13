@@ -24,6 +24,9 @@ $font-size: 24px;
     width: $image-width;
     grid-template-rows: repeat(auto, 4);
     gap: 0;
+    &:hover{
+        cursor: pointer;
+    }
     &__description{
         @include m.flex-dir(column);
         row-gap: 14px;

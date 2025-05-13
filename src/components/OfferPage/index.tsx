@@ -6,14 +6,27 @@ import { getPreviewImage } from "../../models/Utils/utils";
 import * as style from "../../styles/offer_page/offer_page.module.scss"
 import clsx from "clsx";
 import { useSelector } from "react-redux";
-import { getUserState } from "../../store/store";
+import { getUserState, RootState } from "../../store/store";
 import { SelectableList } from "../SelectableList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Navigate, useParams } from "react-router-dom";
+import { selectOfferById } from "../../slices/offerSlice";
+import { IUser } from "../../models/IUser";
+import { selectUser } from "../../slices/userSlice";
+import { OfferApi } from "../../models/IOfferApi";
+import { Api } from "../../models/Utils/Api";
 
 export const OfferPage = () => {
-    const offer = mockOffers[0];
-    const userState = useSelector(getUserState);
-    const currentUser = userState.authed ? userState.user! : User;
+    const {id} = useParams();
+    const offer = useSelector<RootState, IOffer | undefined>((state) => selectOfferById(state, id ? id : "-1"));
+    const [offerUser, setOfferUser] = useState<IUser | null>(null);
+    if(!offer)
+        return <Navigate to="/"/>
+    const currentUser = useSelector(getUserState);
+    useEffect(() => {
+        const offerApi = new OfferApi(new Api(""));
+        offerApi.getUser(offer.ownerId).then(res => setOfferUser(res))
+    }, [offer])
 
     const handleImageSelected = (el: HTMLLIElement, ind: number, prev?: HTMLLIElement) => {
         el.classList.add(style["offer-page__stack-image_selected"]);
@@ -34,9 +47,9 @@ export const OfferPage = () => {
                 
                 <img className={style["offer-page__offer-image"]} src={curImage} alt="offer-image"/>
                 <div className={style["offer-page__stats"]}>
-                    <UserStats user={currentUser}/>
+                    {offerUser && <UserStats user={offerUser}/>}
                 </div>
-                {offer.ownerId === currentUser.id ? ( <div className={style["offer-page__buttons"]}>
+                {currentUser.authed && offer.ownerId === currentUser.user?.id? ( <div className={style["offer-page__buttons"]}>
                         <button className={clsx(style["button_neutral"], style["button"])}>Редактировать</button>
                         <button className={clsx(style["button_negative"], style["button"])}>Удалить</button>
                 </div>) :
