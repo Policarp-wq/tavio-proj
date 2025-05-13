@@ -2,6 +2,15 @@ import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import * as registerFormStyle from "../../../styles/register-form/register-form.module.scss";
 import * as userFormStyle from "../../../styles/user-form/user-form.module.scss";
 import clsx from "clsx";
+import { ILogininfo } from "../../../models/ILoginInfo";
+import { loginUser, registerUser } from "../../../slices/userSlice";
+import { AsyncThunkAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { UnknownAction } from "redux";
+import { IUser } from "../../../models/IUser";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../store/store";
+import { useNavigate } from "react-router-dom";
+import { IRegisterInfo } from "../../../models/IRegisterInfo";
 
 export const RegisterForm = () => {
     const [user, setUser] = useState({
@@ -11,16 +20,22 @@ export const RegisterForm = () => {
         phone: "",
     });
     const [isFormValid, setIsFormValid] = useState(false);
-
+    const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setUser((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         if (!isFormValid) return;
-        alert(JSON.stringify(user));
+        try {
+            const userData = await dispatch(registerUser(user as IRegisterInfo)).unwrap();
+            navigate("/"); 
+        } catch (err: any) {
+            alert(err.message || "Ошибка входа");
+        }
     };
 
     useEffect(() => {
@@ -81,3 +96,4 @@ export const RegisterForm = () => {
         </form>
     );
 };
+

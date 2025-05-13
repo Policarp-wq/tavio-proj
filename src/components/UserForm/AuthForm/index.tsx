@@ -21,10 +21,15 @@ export const AuthForm = () => {
         setUser((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         if (!isFormValid) return;
-        dispatch(loginUser(user as ILogininfo))
+        try {
+            const userData = await dispatch(loginUser(user as ILogininfo)).unwrap();
+            navigate("/"); 
+        } catch (err: any) {
+            alert(err.message || "Ошибка входа");
+        }
     };
 
     useEffect(() => {

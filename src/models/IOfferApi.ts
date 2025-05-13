@@ -5,6 +5,7 @@ import { ILogininfo } from "./ILoginInfo";
 import { IOffer, IOfferPreview, IOfferRegisterInfo } from "./IOffer";
 import { IRegisterInfo } from "./IRegisterInfo";
 import { IUser } from "./IUser";
+import { Offers, Users } from "./MockDb";
 import { IApi } from "./Utils/Api";
 
 export type TError = string;
@@ -26,20 +27,23 @@ export interface IOfferApi{
 }
 
 export class OfferApi implements IOfferApi{
-    constructor(private _client: IApi,
-         private _offers: IOffer[] = mockOffers) {
+    constructor(private _client: IApi) {
         
     }
     registerUser(info: IRegisterInfo): Promise<IUser> {
-        return Promise.resolve(User);
+        const registredUser = {...info, rating: 0, registerDate: new Date(), id: (Users[Users.length - 1].id + "2"), iconUrl: ""};
+        alert(registredUser.id)
+        Users.push(registredUser);
+        return Promise.resolve(Users[-1]);
     }
     getOffers(): Promise<IOffer[]> {
-        return Promise.resolve(this._offers);
+        return Promise.resolve(Offers);
     }
     loginUser(info: ILogininfo): Promise<IUser> {
-        if(info.login === User.login && info.password === "1234")
-            return Promise.resolve(User);
-        return Promise.reject("Wrong data");
+        const res = Users.filter(u => u.login === info.login);
+        if(res.length == 0)
+            return Promise.reject("No user with this login info");
+        return Promise.resolve(res[0]);
     }
     // getUsersOffers(userId: string): Promise<IOfferPreview[]> {
     //     return Promise.resolve(this._offers);

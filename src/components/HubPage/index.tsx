@@ -22,7 +22,7 @@ export const HubPage = ({query} : THubPageProps) =>{
             <AsideMenu></AsideMenu>
             <div>
                 <h2 className={style["hub-page__title"]}>Список товаров</h2>
-                <OffersPreviewList filter={query} offers={mockOfferPreviews}/>
+                <OffersPreviewList filter={query}/>
             </div>
             <UserOffers/>
         </div>

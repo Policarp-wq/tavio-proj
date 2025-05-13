@@ -4,6 +4,7 @@ import { IOfferApi, OfferApi } from "../models/IOfferApi"
 import { Api } from "../models/Utils/Api"
 import { IOfferPreview } from "../models/IOffer"
 import { ILogininfo } from "../models/ILoginInfo"
+import { IRegisterInfo } from "../models/IRegisterInfo"
 
 export interface IUserState{
     user?: IUser,
@@ -24,6 +25,13 @@ export const loginUser = createAsyncThunk(
     "user/login",
     async (info: ILogininfo) =>{
         return api.loginUser(info);
+    }
+)
+
+export const registerUser = createAsyncThunk(
+    "user/register",
+    async (info: IRegisterInfo) =>{
+        return api.registerUser(info);
     }
 )
 
@@ -59,7 +67,20 @@ export const userSlice = createSlice({
                 state.user = action.payload;
                 state.offers = [];
                 state.requested = false;
-            })
+            }),
+            builder.addCase(registerUser.pending, (state) => {
+                state.error = undefined;
+                state.requested = true;
+            });
+            builder.addCase(registerUser.rejected, (state, action) => {
+                state.requested = false;
+                state.error = action.error.message || "An unknown error occurred";
+            });
+            builder.addCase(registerUser.fulfilled, (state, action) => {
+                state.authed = true;
+                state.user = action.payload;
+                state.requested = false;
+            });
         },
     selectors: {
         selectUser: (state: IUserState) => state.user

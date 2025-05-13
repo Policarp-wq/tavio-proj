@@ -3,18 +3,31 @@ import { IOffer, IOfferPreview } from "../../models/IOffer"
 import * as style from "../../styles/offer_preview/offer_preview.module.scss"
 import emptyStar from '../../assets/images/star-empty.svg';
 import filledStar from '../../assets/images/star-filled.svg';
-import { filterOffers, getPreviewImage } from "../../models/Utils/utils";
+import { filterOffers, getPreviewImage, toOfferPreview } from "../../models/Utils/utils";
+import { JSX, useEffect, useLayoutEffect } from "react";
+import { OfferApi } from "../../models/IOfferApi";
+import { Api } from "../../models/Utils/Api";
 
 export type TOffersPreviewListProps = {
-    offers: IOfferPreview[],
     filter?: string
 }
 
-export const OffersPreviewList = ({offers, filter=""}: TOffersPreviewListProps) =>{
-    const searchResult = filterOffers(offers, filter).map((o, index) => (<OfferPreview index={index} offer={o}/>));
+import { useState } from "react";
+
+export const OffersPreviewList = ({ filter = "" }: TOffersPreviewListProps) => {
+    const [searchResult, setSearchResult] = useState<JSX.Element[]>([]);
+
+    useEffect(() => {
+        const api = new OfferApi(new Api(""));
+        api.getOffers().then(offers => {
+            const previews = offers.map(o => toOfferPreview(o, false));
+            setSearchResult(filterOffers(previews, filter).map((o, index) => (<OfferPreview key={index} index={index} offer={o} />)));
+        });
+    }, [filter]);
+
     return (
         <ul className={style["offer-preview-list"]}>
-            { searchResult.length > 0 ? searchResult : <h1>Ничего не найдено(</h1> }
+            {searchResult.length > 0 ? searchResult : <h1>Ничего не найдено(</h1>}
         </ul>
     );
 }
