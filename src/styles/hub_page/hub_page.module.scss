@@ -7,6 +7,7 @@
    column-gap: 26px;
    position: relative;
    flex-grow: 1;
+   height: 100%;
    &__title{
       $title-size: 36px;
       @if v.$device == small{

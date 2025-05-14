@@ -1,5 +1,6 @@
 import { SyntheticEvent, useEffect, useRef } from "react";
 import * as style from "../../styles/search_bar/search_bar.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export type TSearchBarProps = {
     placeholder?: string;
@@ -10,6 +11,7 @@ export type TSearchBarProps = {
 
 export const SearchBar = ({placeholder = "Поиск по объявлениям", onInput, onSearch, clearOnSearch= false} : TSearchBarProps) =>{
     const inputRef = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate();
     const handleInput = (e: SyntheticEvent) =>{
         if(inputRef.current){
             onInput?.(inputRef.current.value);

@@ -10,8 +10,8 @@ import { ProfileSection } from "../ProfileSection";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store/store";
 import { loginUser } from "../../slices/userSlice";
-import { User } from "../../models/constants";
 import { ILogininfo } from "../../models/ILoginInfo";
+import { useNavigate } from "react-router-dom";
 
 export type THeaderProps = {
     onSearchChange: (s: string) => void
@@ -20,8 +20,10 @@ export type THeaderProps = {
 export const Header = ({onSearchChange} : THeaderProps) => {
     const dispatch = useDispatch<AppDispatch>();
     // dispatch(loginUser({login: User} as ILogininfo));
+    const navigate = useNavigate();
     const handleSearch = (s: string) =>{
         onSearchChange(s);
+        navigate("/");
     };
     return (
         <header className={style.header}>

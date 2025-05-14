@@ -21,7 +21,6 @@ export interface IOfferPreview{
     description: string,
     category: Category,
     address: string,
-    liked: boolean
 }
 
 export interface IOfferRegisterInfo{

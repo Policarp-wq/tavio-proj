@@ -13,10 +13,6 @@ export type THubPageProps = {
 }
 
 export const HubPage = ({query} : THubPageProps) =>{
-    const dispatch = useDispatch<AppDispatch>();
-        useEffect(() => {
-            dispatch(fetchOffers());
-        }, [dispatch])
     return (
         <div className={style["hub-page"]}>
             <AsideMenu></AsideMenu>

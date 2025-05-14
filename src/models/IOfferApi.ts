@@ -1,76 +1,103 @@
-import { OffersPreviewList } from "../components/OfferPreview";
-import { Category } from "./Category";
-import { User } from "./constants";
+import { Categories, Category } from "./Category";
 import { ILogininfo } from "./ILoginInfo";
-import { IOffer, IOfferPreview, IOfferRegisterInfo } from "./IOffer";
+import { IOffer, IOfferRegisterInfo } from "./IOffer";
 import { IRegisterInfo } from "./IRegisterInfo";
 import { IUser } from "./IUser";
-import { Offers, Users } from "./MockDb";
-import { IApi } from "./Utils/Api";
+import { Api, IApi } from "./Utils/Api";
 
 export type TError = string;
-// export type Response<T> = Promise<T | TError>; 
 
-export interface IOfferApi{
-    // getAllOffers() : IOffer[];
-    // getUserOffers(userId: string): IOffer[];
-    // getBySearchString(query: string): IOffer[];
-    // getByCategory(query: Category): IOffer[];
-
+export interface IOfferApi {
     registerUser(info: IRegisterInfo): Promise<IUser>;
     loginUser(info: ILogininfo): Promise<IUser>;
-    //getUsersOffers(userId: string): Promise<IOfferPreview[]>;
-
     createOffer(info: IOfferRegisterInfo): Promise<boolean>;
-    updteOffer(info: IOfferRegisterInfo): Promise<boolean>;
+    updateOffer(info: IOfferRegisterInfo, id: string): Promise<boolean>;
     getUser(userId: string): Promise<IUser>;
-    getOffers(): Promise<IOffer[]>
+    getOffers(): Promise<IOffer[]>;
+    getOffer(offerid: string): Promise<IOffer>;
+    getUserOffers(userId: string): Promise<IOffer[]>;
 }
 
-export class OfferApi implements IOfferApi{
-    constructor(private _client: IApi) {
-        
+export class OfferApi implements IOfferApi {
+    constructor(private _client: IApi) {}
+    // Получение всех офферов пользователя по userId с запросом на сервер
+    async getUserOffers(userId: string): Promise<IOffer[]> {
+        try {
+            const response = await this._client.get(`/offers/user/${userId}`);
+            return response as IOffer[];
+        } catch {
+            return await Promise.reject("Failed to get user offers");
+        }
     }
-    getUser(userId: string): Promise<IUser> {
-        const user = Users.filter(u => u.id === userId);
-        if(user.length == 0)
-            return Promise.reject("Not found")
-        return Promise.resolve(user[0]);
+    // Получение оффера по id с запросом на сервер
+    async getOffer(offerid: string): Promise<IOffer> {
+        try {
+            const response = await this._client.get(`/offers/${offerid}`);
+            return response as IOffer;
+        } catch {
+            return await Promise.reject("Offer not found");
+        }
     }
-    createOffer(info: IOfferRegisterInfo): Promise<boolean> {
-        Offers.push({
-            ...info,
-            id: `o${Offers.length + 1}`,
-            address: "Не указан",
-            publishDate: new Date(),
-        });
-        return Promise.resolve(true);
+
+    // Получение пользователя по id с запросом на сервер
+    async getUser(userId: string): Promise<IUser> {
+        try {
+            const response = await this._client.get(`/users/${userId}`);
+            return response as IUser;
+        } catch {
+            return await Promise.reject("User not found");
+        }
     }
-    updteOffer(info: IOfferRegisterInfo): Promise<boolean> {
-        const idx = Offers.findIndex(o => o.id === (info as any).id);
-        if (idx === -1) return Promise.resolve(false);
-        Offers[idx] = {
-            ...Offers[idx],
-            ...info,
-        };
-        return Promise.resolve(true);
+
+    // Создание нового оффера с запросом на сервер
+    async createOffer(info: IOfferRegisterInfo): Promise<boolean> {
+        try {
+            await this._client.post("/offers", info);
+            return true;
+        } catch {
+            return await Promise.reject("Failed to create offer");
+        }
     }
-    registerUser(info: IRegisterInfo): Promise<IUser> {
-        const registredUser = {...info, rating: 0, registerDate: new Date(), id: (Users[Users.length - 1].id + "2"), iconUrl: ""};
-        // alert(registredUser.id)
-        Users.push(registredUser);
-        return Promise.resolve(Users[-1]);
+
+    // Обновление существующего оффера по id с запросом на сервер
+    async updateOffer(info: IOfferRegisterInfo, id: string): Promise<boolean> {
+        try {
+            await this._client.put(`/offers/${id}`, info);
+            return true;
+        } catch {
+            return await Promise.reject("Failed to update offer");
+        }
     }
-    getOffers(): Promise<IOffer[]> {
-        return Promise.resolve(Offers);
+
+    // Регистрация нового пользователя с запросом на сервер
+    async registerUser(info: IRegisterInfo): Promise<IUser> {
+        try {
+            const response = await this._client.post("/users", info);
+            return response as IUser;
+        } catch {
+            return await Promise.reject("Failed to register user");
+        }
     }
-    loginUser(info: ILogininfo): Promise<IUser> {
-        const res = Users.filter(u => u.login === info.login);
-        if(res.length == 0)
-            return Promise.reject("No user with this login info");
-        return Promise.resolve(res[0]);
+
+    // Получение списка всех офферов с запросом на сервер
+    async getOffers(): Promise<IOffer[]> {
+        try {
+            const response = await this._client.get("/offers");
+            return response as IOffer[];
+        } catch {
+            return await Promise.reject("Failed to get offers");
+        }
     }
-    // getUsersOffers(userId: string): Promise<IOfferPreview[]> {
-    //     return Promise.resolve(this._offers);
-    // }
+
+    // Логин пользователя с запросом на сервер
+    async loginUser(info: ILogininfo): Promise<IUser> {
+        try {
+            const response = await this._client.post("/login", info);
+            return response as IUser;
+        } catch {
+            return await Promise.reject("Invalid login credentials");
+        }
+    }
 }
+
+export const offerApi = new OfferApi(new Api("http://localhost:3000"))

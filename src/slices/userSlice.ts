@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { IUser } from "../models/IUser"
-import { IOfferApi, OfferApi } from "../models/IOfferApi"
+import { IOfferApi, offerApi, OfferApi } from "../models/IOfferApi"
 import { Api } from "../models/Utils/Api"
 import { IOfferPreview } from "../models/IOffer"
 import { ILogininfo } from "../models/ILoginInfo"
@@ -19,19 +19,18 @@ const initialState: IUserState = {
     offers: []
 }
 
-const api: IOfferApi = new OfferApi(new Api(""))
 
 export const loginUser = createAsyncThunk(
     "user/login",
     async (info: ILogininfo) =>{
-        return api.loginUser(info);
+        return offerApi.loginUser(info);
     }
 )
 
 export const registerUser = createAsyncThunk(
     "user/register",
     async (info: IRegisterInfo) =>{
-        return api.registerUser(info);
+        return offerApi.registerUser(info);
     }
 )
 

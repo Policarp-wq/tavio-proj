@@ -4,6 +4,6 @@ export interface IUser {
     name: string,
     phone: string,
     rating: number,
-    registerDate: Date,
+    registerDate: string,
     iconUrl: string
 }

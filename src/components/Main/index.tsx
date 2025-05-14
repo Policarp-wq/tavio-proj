@@ -6,7 +6,6 @@ import { Categories, Category } from "../../models/Category"
 import { OffersPreviewList } from "../OfferPreview"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { fetchOffers, selectUsersOffers } from "../../slices/offerSlice"
 import { AppDispatch, RootState } from "../../store/store"
 import { IOffer } from "../../models/IOffer"
 import { UserOffers } from "../UserOffers"
@@ -29,6 +28,7 @@ export const Main = ({query}: TMainProps) =>{
                 <Route path="/login" element={<UserForm state="Auth"/>}/>
                 <Route path="/offer/:id" element={<OfferPage/>}/>
                 <Route path="/offer-edit/:id" element={<ProtectedElement><OfferEditPage/></ProtectedElement> }/>
+                <Route path="/offer-edit/" element={<ProtectedElement><OfferEditPage/></ProtectedElement> }/>
                 <Route path="/*" element={<h1>Not found</h1>}/>
 
             </Routes>

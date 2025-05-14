@@ -13,9 +13,13 @@ export const ProfileSection = ({} : TProfileSectionProps) =>{
     const user = useSelector(getUserState);
     return (
         <div className={style["profile-section"]}>
-            <Link to="/offer-edit" className={style["profile-section__offer-create"]}>Создать объявление</Link>
-            <Avatar/>
-            {user.authed ? <h1 className={style["profile-section__name"]}>{user.user?.name}</h1>  : <Link to="/login" className={style["profile-section__name"]}>Авторизоваться</Link>}
+            {user.authed ?
+               <>
+                <Link to="/offer-edit/" className={style["profile-section__offer-create"]}>Создать объявление</Link>
+               <h1 className={style["profile-section__name"]}>{user.user?.name}</h1>
+                <Avatar src={user.user!.iconUrl}/>
+               </>
+              : <Link to="/login" className={style["profile-section__name"]}>Авторизоваться</Link>}
         </div>
     );
 }

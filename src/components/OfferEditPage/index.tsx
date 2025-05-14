@@ -1,60 +1,78 @@
 import { ChangeEvent, FormEvent, useRef, useState, useEffect } from "react";
 import { IOffer, IOfferRegisterInfo } from "../../models/IOffer";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, getUserState, RootState } from "../../store/store";
-
+import { useSelector } from "react-redux";
+import { getUserState } from "../../store/store";
 import * as style from "../../styles/offer-edit/offer-edit.module.scss";
-
 import camera from "../../assets/images/camera-icon.png";
 import clsx from "clsx";
-import { ProtectedElement } from "../ProtectedElement";
-import { OfferApi } from "../../models/IOfferApi";
-import { Api } from "../../models/Utils/Api";
+import { offerApi } from "../../models/IOfferApi";
 import { useNavigate, useParams } from "react-router-dom";
-import { selectOfferById, selectOffers } from "../../slices/offerSlice";
 
-export type TOfferEditPageProps = {
-    init?: IOffer;
-};
-
-export const OfferEditPage = ({ }: TOfferEditPageProps) => {
-    const {id} = useParams();
-    const init = useSelector<RootState, IOffer | undefined>((state) => selectOfferById(state, id ? id : "-1"));
-    const isEdit = init;
+export const OfferEditPage = () => {
+    const { id } = useParams();
     const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const navigate = useNavigate();
     const user = useSelector(getUserState);
-    const [offer, setOffer] = useState({
-        name: init?.name ?? "",
-        price: init?.price ?? "",
-        description: init?.description ?? "",
-        images: init?.images ?? [],
-    });
+
+    const [offer, setOffer] = useState<IOfferRegisterInfo | null>(null);
     const [isFormValid, setIsFormValid] = useState(false);
+    const [loading, setLoading] = useState(!!id);
+
+    useEffect(() => {
+        if (id) {
+            offerApi.getOffer(id).then((data) => {
+                setOffer({
+                    name: data.name,
+                    price: data.price,
+                    description: data.description,
+                    images: data.images,
+                    ownerId: data.ownerId,
+                    category: data.category
+                });
+            }).catch(() => {
+                alert("Не удалось загрузить объявление");
+                navigate("/");
+            }).finally(() => setLoading(false));
+        } else {
+            setOffer({
+                name: "",
+                price: 0,
+                description: "",
+                images: [],
+                ownerId: user.user!.id,
+                category: "Транспорт"
+            });
+        }
+    }, [id]);
+
+    useEffect(() => {
+        if (!offer) return;
+        const isNameValid = offer.name.trim().length > 0;
+        const isPriceValid = !isNaN(Number(offer.price)) && Number(offer.price) >= 0;
+        const isDescriptionValid = offer.description.trim().length > 0;
+        const isImagesValid = offer.images.length > 0;
+        setIsFormValid(isNameValid && isPriceValid && isDescriptionValid && isImagesValid);
+    }, [offer]);
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setOffer((prev) => ({ ...prev, [name]: value }));
+        setOffer((prev) => prev ? { ...prev, [name]: value } : prev);
     };
 
     const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setOffer((prev) => ({ ...prev, [name]: value }));
+        setOffer((prev) => prev ? { ...prev, [name]: value } : prev);
     };
-    const dispatch = useDispatch<AppDispatch>();
-    const navigate = useNavigate();
+
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        if (!isFormValid) return;
-        const offerApi = new OfferApi(new Api(""));
-        if(isEdit){
-            offerApi.updteOffer(offer as IOfferRegisterInfo).then(
-            res => {navigate("/")}
-                ).catch(err => alert("Ошибка"));
-            return;
-        }
-        offerApi.createOffer(offer as IOfferRegisterInfo).then(
-            res => {navigate("/")}
-        ).catch(err => alert("Ошибка"));
+        if (!isFormValid || !offer) return;
+
+        const request = id
+            ? offerApi.updateOffer(offer, id)
+            : offerApi.createOffer(offer);
+
+        request.then(() => navigate("/")).catch(() => alert("Ошибка"));
     };
 
     const handleCameraClick = () => {
@@ -63,27 +81,17 @@ export const OfferEditPage = ({ }: TOfferEditPageProps) => {
 
     const addPhoto = (e: ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
-        if (!files) return;
-        const newImages = Array.from(files).map((file) => URL.createObjectURL(file));
-        setOffer((prev) => ({
-            ...prev,
-            images: [...prev.images, ...newImages],
-        }));
+        if (!files || !offer) return;
+        const newImages = Array.from(files).map(file => URL.createObjectURL(file));
+        setOffer({ ...offer, images: [...offer.images, ...newImages] });
     };
 
-    useEffect(() => {
-        const isNameValid = offer.name.trim().length > 0;
-        const isPriceValid = !isNaN(Number(offer.price)) && Number(offer.price) >= 0;
-        const isDescriptionValid = offer.description.trim().length > 0;
-        const isImagesValid = offer.images.length > 0;
-
-        setIsFormValid(isNameValid && isPriceValid && isDescriptionValid && isImagesValid);
-    }, [offer]);
+    if (loading || !offer) return <p>Загрузка...</p>;
 
     return (
         <form className={style["offer-edit"]} onSubmit={handleSubmit}>
             <h1 className={style["offer-edit__title"]}>
-                {isEdit ? "Редактировать" : "Создать"} объявление
+                {id ? "Редактировать" : "Создать"} объявление
             </h1>
             <label>
                 Название
@@ -145,7 +153,7 @@ export const OfferEditPage = ({ }: TOfferEditPageProps) => {
                 type="submit"
                 disabled={!isFormValid}
             >
-                {isEdit ? "Редактировать" : "Создать"}
+                {id ? "Редактировать" : "Создать"}
             </button>
         </form>
     );

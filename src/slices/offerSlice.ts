@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IOffer } from "../models/IOffer";
-import { IOfferApi, OfferApi } from "../models/IOfferApi";
+import { IOfferApi, offerApi, OfferApi } from "../models/IOfferApi";
 import { Api } from "../models/Utils/Api";
 
 export interface IOffersState{
@@ -14,12 +14,11 @@ const initialState: IOffersState = {
     processing: false,
     offers: []
 }
-const api: IOfferApi = new OfferApi(new Api(""))
 
 export const fetchOffers = createAsyncThunk(
     "offer/getOffers",
     async () =>{
-        return api.getOffers();
+        return offerApi.getOffers();
     }
 )
 
@@ -54,5 +53,5 @@ export const offersSlice = createSlice({
 })
 
 
-export const {selectUsersOffers, selectOffers, selectOfferById} = offersSlice.selectors;
+// export const {selectUsersOffers, selectOffers, selectOfferById} = offersSlice.selectors;
 export default offersSlice.reducer;
