@@ -8,7 +8,6 @@ export type TUserStats = {
 }
 
 export const UserStats = ({user} : TUserStats) => {
-    // Преобразуем строку в Date, если это строка
     const regDate = typeof user.registerDate === "string"
         ? new Date(user.registerDate)
         : user.registerDate;

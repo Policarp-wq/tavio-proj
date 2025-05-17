@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useRef, useState, useEffect } from "react";
-import { IOffer, IOfferRegisterInfo } from "../../models/IOffer";
+import { IOfferRegisterInfo } from "../../models/IOffer";
 import { useSelector } from "react-redux";
 import { getUserState } from "../../store/store";
 import * as style from "../../styles/offer-edit/offer-edit.module.scss";
@@ -7,6 +7,7 @@ import camera from "../../assets/images/camera-icon.png";
 import clsx from "clsx";
 import { offerApi } from "../../models/IOfferApi";
 import { useNavigate, useParams } from "react-router-dom";
+import { Categories } from "../../models/Category";
 
 export const OfferEditPage = () => {
     const { id } = useParams();
@@ -62,6 +63,11 @@ export const OfferEditPage = () => {
     const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setOffer((prev) => prev ? { ...prev, [name]: value } : prev);
+    };
+
+    const handleCategoryChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        const { value } = e.target;
+        setOffer((prev) => prev ? { ...prev, category: value as IOfferRegisterInfo["category"] } : prev);
     };
 
     const handleSubmit = (e: FormEvent) => {
@@ -123,6 +129,21 @@ export const OfferEditPage = () => {
                     name="description"
                     value={offer.description}
                 />
+            </label>
+            <label>
+                Категория
+                <select
+                    className={style["offer-edit__input"]}
+                    name="category"
+                    value={offer.category}
+                    onChange={handleCategoryChange}
+                >
+                    {Categories.map((cat) => (
+                        <option key={cat} value={cat}>
+                            {cat}
+                        </option>
+                    ))}
+                </select>
             </label>
             <ul className={style["offer-edit__img-stack"]}>
                 <li>

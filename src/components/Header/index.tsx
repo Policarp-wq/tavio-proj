@@ -18,8 +18,6 @@ export type THeaderProps = {
 }
 
 export const Header = ({onSearchChange} : THeaderProps) => {
-    const dispatch = useDispatch<AppDispatch>();
-    // dispatch(loginUser({login: User} as ILogininfo));
     const navigate = useNavigate();
     const handleSearch = (s: string) =>{
         onSearchChange(s);

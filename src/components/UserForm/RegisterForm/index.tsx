@@ -18,6 +18,7 @@ export const RegisterForm = () => {
         password: "",
         name: "",
         phone: "",
+        
     });
     const [isFormValid, setIsFormValid] = useState(false);
     const dispatch = useDispatch<AppDispatch>();

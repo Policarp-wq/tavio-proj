@@ -59,6 +59,15 @@ export class OfferApi implements IOfferApi {
         }
     }
 
+    async deleteOffer(id: string): Promise<boolean> {
+        try {
+            await this._client.delete(`/offers/${id}`);
+            return true;
+        } catch {
+            return await Promise.reject("Failed to delete offer");
+        }
+    }
+
     // Обновление существующего оффера по id с запросом на сервер
     async updateOffer(info: IOfferRegisterInfo, id: string): Promise<boolean> {
         try {
@@ -72,7 +81,7 @@ export class OfferApi implements IOfferApi {
     // Регистрация нового пользователя с запросом на сервер
     async registerUser(info: IRegisterInfo): Promise<IUser> {
         try {
-            const response = await this._client.post("/users", info);
+            const response = await this._client.post("/register", info);
             return response as IUser;
         } catch {
             return await Promise.reject("Failed to register user");

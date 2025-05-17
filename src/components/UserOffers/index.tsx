@@ -28,8 +28,7 @@ export const UserOffers = ({} : TUserOffersProps) =>{
             {user.authed ? 
             <ul className={style["user-offers-list"]}>
                 {offers.map((val, ind) => <UserOffer offer={val} index={ind} key={val.id}/>)}
-            </ul>
-                
+            </ul>        
             :
             <h2 className={clsx(style["user-offers-area__title"], style["user-offers-area__title_not-found"])}>Необходимо авторизоваться</h2>
             }
@@ -46,7 +45,7 @@ export const UserOffer = ({offer, index} : TUserOfferProps) =>{
         const date = new Date(publishDate);
         return date.toLocaleDateString("ru-RU", {
             year: "numeric",
-            month: "long",
+            month: "numeric",
         });
     }
 

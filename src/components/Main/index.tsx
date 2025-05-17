@@ -15,6 +15,7 @@ import { UserForm } from "../UserForm"
 import { OfferEditPage } from "../OfferEditPage"
 import { Route, Routes } from "react-router-dom"
 import { ProtectedElement } from "../ProtectedElement"
+import { OfferBuyPage } from "../OfferBuyPage"
 export type TMainProps = {
     query: string;
 }
@@ -29,6 +30,7 @@ export const Main = ({query}: TMainProps) =>{
                 <Route path="/offer/:id" element={<OfferPage/>}/>
                 <Route path="/offer-edit/:id" element={<ProtectedElement><OfferEditPage/></ProtectedElement> }/>
                 <Route path="/offer-edit/" element={<ProtectedElement><OfferEditPage/></ProtectedElement> }/>
+                <Route path="/offer-buy/:id" element={<ProtectedElement><OfferBuyPage/></ProtectedElement> }/>
                 <Route path="/*" element={<h1>Not found</h1>}/>
 
             </Routes>

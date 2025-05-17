@@ -7,6 +7,7 @@ import * as style from "../styles/index.module.scss"
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 import { useState } from "react";
+import { Footer } from "../components/Footer";
 
 export const App = () => {
     // window.innerWidth | order in css
@@ -17,6 +18,7 @@ export const App = () => {
                 <Header onSearchChange={setQuery}>
                 </Header>
                 <Main query={searchQuery}></Main>
+                <Footer></Footer>
             </Provider>
         </div>
     )

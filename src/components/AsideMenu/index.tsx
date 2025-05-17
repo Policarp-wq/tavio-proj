@@ -14,7 +14,6 @@ export const AsideMenu = ({} : TAsideMenuProps) => {
         text: c
     }));
     const [opened, setOpened] = useState(false);
-    console.log(style)
     return(
     <aside className={clsx(style.aside)}>
         <h2 className={style.aside__title}>Категории</h2>

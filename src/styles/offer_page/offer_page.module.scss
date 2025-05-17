@@ -40,6 +40,7 @@ $header-font: 42px;
     &__offer-image{
         grid-area: img;
         width: 40vw;
+        height: 70vh;
         border: 1px solid v.$coal-color;
         .selected{
             border: 2px solid red;

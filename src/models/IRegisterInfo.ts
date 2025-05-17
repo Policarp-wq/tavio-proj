@@ -2,5 +2,6 @@ export interface IRegisterInfo{
     login: string,
     password: string,
     name: string,
-    phone: string
+    phone: string,
+    iconUrl: string;
 }
