@@ -13,7 +13,7 @@ export interface IUserState{
     error?: string
     authed: boolean
 }
-const initialState: IUserState = {
+export const initialState: IUserState = {
     authed: false,
     requested: false,
     offers: []

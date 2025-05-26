@@ -9,7 +9,7 @@ export interface IOffersState{
     offers: IOffer[]
 }
 
-const initialState: IOffersState = {
+export const initialState: IOffersState = {
     loaded: false,
     processing: false,
     offers: []
