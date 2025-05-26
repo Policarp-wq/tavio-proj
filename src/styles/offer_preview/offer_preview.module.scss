@@ -17,6 +17,7 @@ $font-size: 24px;
 }
 
 .offer-preview{
+    @include m.card-hover-effect(3px);
     border: 1px solid black;
     border-radius: 10px;
     overflow: clip;
@@ -24,9 +25,7 @@ $font-size: 24px;
     width: $image-width;
     grid-template-rows: repeat(auto, 4);
     gap: 0;
-    &:hover{
-        cursor: pointer;
-    }
+    height: max-content;
     &__description{
         @include m.flex-dir(column);
         row-gap: 14px;

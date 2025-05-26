@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import clsx from "clsx"
 import { offerApi } from "../../models/IOfferApi"
 import { getPreviewImage } from "../../models/Utils/utils"
+import { useNavigate } from "react-router-dom"
 
 export type TUserOffersProps = {
     // offers: IOffer[]
@@ -41,6 +42,7 @@ export type TUserOfferProps = {
 };
 export const UserOffer = ({offer, index} : TUserOfferProps) =>{
     const image = getPreviewImage(offer.images);
+    const navigate = useNavigate();
     function getFormattedDate(publishDate: Date) {
         const date = new Date(publishDate);
         return date.toLocaleDateString("ru-RU", {
@@ -49,8 +51,12 @@ export const UserOffer = ({offer, index} : TUserOfferProps) =>{
         });
     }
 
+    const handleOfferClick = () => {
+        navigate(`/offer/${offer.id}`)
+    }
+
     return (
-        <li className={style["user-offer"]} key={index}>
+        <li className={style["user-offer"]} key={index} onClick={handleOfferClick}>
             <img src={image} alt="offer_iamge" className={style["user-offer__image"]}/>
             <div className={style["user-offer__description"]}>
                 <h3 className={style["user-offer__name"]}>{offer.name}</h3>

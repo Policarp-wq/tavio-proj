@@ -12,5 +12,5 @@ export const filterOffers = (arr: IOfferPreview[], filterString: string) => arr.
     if(filterString.length == 0)
         return true;
     const filter = filterString.toLowerCase();
-    return o.category.toLowerCase().startsWith(filter) || o.name.toLowerCase().startsWith(filter);
+    return o.category.toLowerCase().startsWith(filter) || o.name.toLowerCase().startsWith(filter) || o.description.includes(filter);
 })

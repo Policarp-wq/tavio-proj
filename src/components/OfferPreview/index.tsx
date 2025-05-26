@@ -13,12 +13,10 @@ export type TOffersPreviewListProps = {
 }
 
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export const OffersPreviewList = ({ filter = "" }: TOffersPreviewListProps) => {
     const [searchResult, setSearchResult] = useState<JSX.Element[]>([]);
-    let offers: IOffer[];
 
     useEffect(() => {
         offerApi.getOffers().then(offers => {

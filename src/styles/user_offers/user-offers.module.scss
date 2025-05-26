@@ -26,15 +26,20 @@
 }
 
 .user-offers-list{
+    margin: 6px;
     @include m.flex-dir(column);
     height: fit-content;
     max-height: 60vh;
     overflow: scroll;
+    gap: 8px
 }
 
 .user-offer{
     @include m.flex-dir(row);
+    @include m.card-hover-effect(2px);
     min-width: 408px;
+    margin: 4px;
+
     &__image{
         $dim: 148px;
         width: $dim;
