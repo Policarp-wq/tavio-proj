@@ -108,4 +108,4 @@ export class OfferApi implements IOfferApi {
     }
 }
 
-export const offerApi = new OfferApi(new Api("http://localhost:3000"))
+export const offerApi = new OfferApi(new Api("http://localhost:3000/api"))

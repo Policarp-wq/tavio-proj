@@ -1,0 +1,47 @@
+[
+    {
+        "id": "u1",
+        "login": "alice",
+        "name": "Alice Smith",
+        "phone": "1111111111",
+        "rating": 4.8,
+        "registerDate": "2023-01-10",
+        "iconUrl": "https://static.wikia.nocookie.net/deltatraveler/images/f/fb/Ralsei.png"
+    },
+    {
+        "id": "u2",
+        "login": "bob",
+        "name": "Bob Johnson",
+        "phone": "2222222222",
+        "rating": 4.2,
+        "registerDate": "2023-02-15",
+        "iconUrl": "https://unanything.fandom.com/wiki/Billy_Herrington?file=Billy.jpg"
+    },
+    {
+        "id": "u3",
+        "login": "carol",
+        "name": "Carol Lee",
+        "phone": "3333333333",
+        "rating": 4.5,
+        "registerDate": "2023-03-20",
+        "iconUrl": "https://myvetbyronbay.com.au/wp-content/uploads/sites/37/2023/09/how-to-keep-your-indoor-cat-happy.jpg"
+    },
+    {
+        "id": "u4",
+        "login": "dave",
+        "name": "Dave Brown",
+        "phone": "4444444444",
+        "rating": 4.0,
+        "registerDate": "2023-04-25",
+        "iconUrl": ""
+    },
+    {
+        "id": "u5",
+        "login": "eve",
+        "name": "Eve White",
+        "phone": "5555555555",
+        "rating": 4.9,
+        "registerDate": "2023-05-30",
+        "iconUrl": "https://unanything.fandom.com/wiki/Billy_Herrington?file=Billy.jpg"
+    }
+]
