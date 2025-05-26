@@ -9,13 +9,13 @@ import { useEffect } from "react"
 import { AppDispatch, RootState } from "../../store/store"
 import { IOffer } from "../../models/IOffer"
 import { UserOffers } from "../UserOffers"
-import { OfferPage } from "../OfferPage"
-import { HubPage } from "../HubPage"
-import { UserForm } from "../UserForm"
-import { OfferEditPage } from "../OfferEditPage"
+import { OfferPage } from "../../pages/OfferPage"
+import { HubPage } from "../../pages/HubPage"
+import { UserForm } from "../../pages/AuthPage"
+import { OfferEditPage } from "../../pages/OfferEditPage"
 import { Route, Routes } from "react-router-dom"
 import { ProtectedElement } from "../ProtectedElement"
-import { OfferBuyPage } from "../OfferBuyPage"
+import { OfferBuyPage } from "../../pages/OfferBuyPage"
 export type TMainProps = {
     query: string;
 }
@@ -32,11 +32,7 @@ export const Main = ({query}: TMainProps) =>{
                 <Route path="/offer-edit/" element={<ProtectedElement><OfferEditPage/></ProtectedElement> }/>
                 <Route path="/offer-buy/:id" element={<ProtectedElement><OfferBuyPage/></ProtectedElement> }/>
                 <Route path="/*" element={<h1>Not found</h1>}/>
-
             </Routes>
-            {/* <HubPage query={query}/> */}
-            {/* <UserForm state="Register"/> */}
-            {/* <OfferEditPage/> */}
         </main>
     )
 }

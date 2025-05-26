@@ -20,7 +20,6 @@ export interface IOfferApi {
 
 export class OfferApi implements IOfferApi {
     constructor(private _client: IApi) {}
-    // Получение всех офферов пользователя по userId с запросом на сервер
     async getUserOffers(userId: string): Promise<IOffer[]> {
         try {
             const response = await this._client.get(`/offers/user/${userId}`);
