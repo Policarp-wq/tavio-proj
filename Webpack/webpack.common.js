@@ -13,7 +13,7 @@ module.exports = {
     filename: production
       ? "static/scripts/[name].[contenthash].js"
       : "static/scripts/[name].js",
-    publicPath: "/",
+    publicPath: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : "/",
   },
   module: {
     rules: [
@@ -90,6 +90,7 @@ module.exports = {
         : "static/styles/[name].css",
     }),
     new webpack.EnvironmentPlugin({
+      PUBLIC_PATH: null,
       NODE_ENV: "development",
     }),
   ],
