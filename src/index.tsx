@@ -3,6 +3,7 @@ import { App } from './app/index';
 import { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
+import "./models/Utils/server";
 import './styles/index.scss';
 
 

@@ -39,10 +39,6 @@ export const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-        // loginUser(state: IUserState, action: PayloadAction<IUser>) {
-        //     state.authed = true;
-        //     state.user = action.payload;
-        // },
         unlogin(state: IUserState){
             state.authed = false;
             state.user = undefined;

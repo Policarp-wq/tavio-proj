@@ -1,5 +1,9 @@
 $device: large;
 
+@media screen and (max-width: 1600px) {
+    $device: small;
+}
+
 $padding-default: 16px;
 @if $device == small {
     $padding-default: 6px;
