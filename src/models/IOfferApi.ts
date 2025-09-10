@@ -28,7 +28,7 @@ export class OfferApi implements IOfferApi {
             return await Promise.reject("Failed to get user offers");
         }
     }
-    // Получение оффера по id с запросом на сервер
+    // Получение офера по id с запросом на сервер
     async getOffer(offerid: string): Promise<IOffer> {
         try {
             const response = await this._client.get(`/offers/${offerid}`);
